@@ -22,10 +22,10 @@ class DemoController extends Controller
 	
    public function actionPaymentGlobal()
 	{
-		Yii::import("ext.yii-ebs.EbsPayment");
+		Yii::import("ext.yiiebs.EbsPayment");
 		
 		 
-		$RETURN_URL = Yii::app()->createAbsoluteUrl("//yii-ebs/demo/paymentResponse", array());
+		$RETURN_URL = Yii::app()->createAbsoluteUrl("//yiiebs/demo/paymentResponse", array());
 		
 		$ebsPayment = new EbsPayment($RETURN_URL);
 		$ebs_post = $ebsPayment->getPaymentFormParams($reference_number, $amount, $name, $address, $city, $state, $country, $postal_code, $phone);
@@ -37,8 +37,8 @@ class DemoController extends Controller
 	
 	public function actionPaymentGlobalResponse()
 	{
-		Yii::import("ext.yii-ebs.EbsPayment");
-		$RETURN_URL = Yii::app()->createAbsoluteUrl("//yii-ebs/demo/paymentGlobalResponse", array());
+		Yii::import("ext.yiiebs.EbsPayment");
+		$RETURN_URL = Yii::app()->createAbsoluteUrl("//yiiebs/demo/paymentGlobalResponse", array());
 		
 		$ebsPayment = new EbsPayment($RETURN_URL);
 		
@@ -56,7 +56,7 @@ class DemoController extends Controller
 	 */
 	public function actionPayment()
 	{
-		Yii::import("ext.yii-ebs.EbsPayment");
+		Yii::import("ext.yiiebs.EbsPayment");
 		//$mode, $ACCOUNT_ID,$SECRET,$RETURN_URL, $CANCEL_URL;
 		if(!Yii::app()->params['ebs']){
 		}
@@ -65,8 +65,8 @@ class DemoController extends Controller
 		$secret = Yii::app()->params['ebs']['secret'];
 		$mode = Yii::app()->params['ebs']['mode'];
 		 
-		$RETURN_URL = Yii::app()->createAbsoluteUrl("//yii-ebs/demo/paymentResponse", array());
-		$CANCEL_URL = Yii::app()->createAbsoluteUrl("//yii-ebs/demo/paymentResponse", array());
+		$RETURN_URL = Yii::app()->createAbsoluteUrl("//yiiebs/demo/paymentResponse", array());
+		$CANCEL_URL = Yii::app()->createAbsoluteUrl("//yiiebs/demo/paymentResponse", array());
 		$ebsPayment = new EbsPayment($mode, $accountId, $secret, $RETURN_URL, $CANCEL_URL);
 		 
 		$ebs_post = $ebsPayment->getParams(array('amount'=>100.00, 'reference_no'=>123));
@@ -78,13 +78,13 @@ class DemoController extends Controller
 
 	public function actionPaymentResponse()
 	{
-		Yii::import("ext.yii-ebs.EbsPayment");
+		Yii::import("ext.yiiebs.EbsPayment");
 		$accountId = Yii::app()->params['ebs']['account_id'];
 		$secret = Yii::app()->params['ebs']['secret'];
 		$mode = Yii::app()->params['ebs']['mode'];
 		 
-		$RETURN_URL = Yii::app()->createAbsoluteUrl("//yii-ebs/demo/paymentResponse", array());
-		$CANCEL_URL = Yii::app()->createAbsoluteUrl("//yii-ebs/demo/paymentResponse", array());
+		$RETURN_URL = Yii::app()->createAbsoluteUrl("//yiiebs/demo/paymentResponse", array());
+		$CANCEL_URL = Yii::app()->createAbsoluteUrl("//yiiebs/demo/paymentResponse", array());
 		$ebsPayment = new EbsPayment($mode, $accountId, $secret, $RETURN_URL, $CANCEL_URL);
 		 
 		$ebsPayment->parseResponse();

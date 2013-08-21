@@ -1,6 +1,6 @@
 <?php
 
-Yii::import("ext.yii-ebs.CryptRC4");
+Yii::import("ext.yiiebs.CryptRC4");
 class EbsPayment{
 
 	public $ACCOUNT_ID = "";
